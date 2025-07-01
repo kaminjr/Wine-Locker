@@ -1,0 +1,690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.77">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;WineLocker - Country Club Wine Manager&lt;/title&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- PWA Meta Tags --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="theme-color" content="#7c3aed"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-status-bar-style" content="default"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-title" content="WineLocker"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="Manage your country club wine locker inventory"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- PWA Icons --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNNSAxN0gxOUwxNS41IDlIMTdMMTggNkgxNUwxNCAzSDEwTDkgNkg2TDcgOUg4LjVMNSAxN1oiIGZpbGw9IiM3YzNhZWQiLz4KPC9zdmc+"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNNSAxN0gxOUwxNS41IDlIMTdMMTggNkgxNUwxNCAzSDEwTDkgNkg2TDcgOUg4LjVMNSAxN1oiIGZpbGw9IiM3YzNhZWQiLz4KPC9zdmc+"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- PWA Manifest --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIldpbmVMb2NrZXIgLSBDb3VudHJ5IENsdWIgV2luZSBNYW5hZ2VyIiwKICAic2hvcnRfbmFtZSI6ICJXaW5lTG9ja2VyIiwKICAiZGVzY3JpcHRpb24iOiAiTWFuYWdlIHlvdXIgY291bnRyeSBjbHViIHdpbmUgbG9ja2VyIGludmVudG9yeSIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmZmZmZmIiwKICAidGhlbWVfY29sb3IiOiAiIzdjM2FlZCIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTVRreUlpQm9aV2xuYUhROUlqRTVNaUlpSUhacFpYZENiM2c5SWpBZ01DQXlOQ0F5TkNJZ1ptbHNiRDBpYm05dVpTSWdlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklpNEtQSEJoZEdnZ1pEMGlUVFVnTVRkSU1UbE1NVFUxTUNBNVNERTNUREU0SURZSU1UVk1NVFFnTTBneE1FeGFJalpJTmt3M0lEbElPQzQxVERVZ01UZGFJaUJtYVd4c1BTSWpOMk16WVdWa0lpOCtDand2YzNabkxnPT0iLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* PWA specific styles */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overscroll-behavior: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-touch-callout: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>user-select: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* iOS specific PWA styles */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (display-mode: standalone) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>padding-top: env(safe-area-inset-top);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>padding-bottom: env(safe-area-inset-bottom);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Hide scrollbars but keep functionality */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Loading animation */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.loading {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes pulse {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { opacity: 0.5; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Install prompt styling */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.install-prompt {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #7c3aed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: slideUp 0.3s ease-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes slideUp {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>from { transform: translate(-50%, 100px); opacity: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>to { transform: translate(-50%, 0); opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-gray-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="root"&gt;&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script type="text/babel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const { useState, useEffect } = React;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Lucide React icons as components</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Wine = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M5 17h14l-3.5-8H17l1-3h-3l-1-3h-4l-1 3H6l1 3h1.5L5 17Z"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Plus = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M12 5v14m-7-7h14"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Search = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;circle cx="11" cy="11" r="8"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="m21 21-4.35-4.35"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Filter = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Share2 = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;circle cx="18" cy="5" r="3"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;circle cx="6" cy="12" r="3"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;circle cx="18" cy="19" r="3"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Camera = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="m23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;circle cx="12" cy="13" r="3"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Star = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Users = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;circle cx="9" cy="7" r="4"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="m22 21-2-2-2 2-2-2"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Bell = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="m13.73 21a2 2 0 0 1-3.46 0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Calendar = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;rect x="3" y="4" width="18" height="18" rx="2" ry="2"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;line x1="16" y1="2" x2="16" y2="6"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;line x1="8" y1="2" x2="8" y2="6"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;line x1="3" y1="10" x2="21" y2="10"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const MapPin = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;circle cx="12" cy="10" r="3"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const Download = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;polyline points="7,10 12,15 17,10"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;line x1="12" y1="15" x2="12" y2="3"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const WineLockerApp = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [activeTab, setActiveTab] = useState('inventory');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [showInstallPrompt, setShowInstallPrompt] = useState(false);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [deferredPrompt, setDeferredPrompt] = useState(null);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [isInstalled, setIsInstalled] = useState(false);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [wines, setWines] = useState(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const saved = localStorage.getItem('wineLocker_wines');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return saved ? JSON.parse(saved) : [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>id: 1,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>name: "Château Margaux 2015",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>type: "Red Wine",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>region: "Bordeaux, France",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>vintage: 2015,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>quantity: 2,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>value: 850,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>notes: "Special occasion wine - anniversary",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>rating: 4.8,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>photo: null,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>addedDate: "2024-01-15"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>id: 2,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>name: "Dom Pérignon 2012",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>type: "Champagne",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>region: "Champagne, France",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>vintage: 2012,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>quantity: 1,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>value: 200,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>notes: "Perfect for celebrations",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>rating: 4.9,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>photo: null,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>addedDate: "2024-02-10"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>id: 3,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>name: "Opus One 2018",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>type: "Red Wine",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>region: "Napa Valley, CA",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>vintage: 2018,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>quantity: 3,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>value: 400,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>notes: "Investment bottle",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>rating: 4.7,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>photo: null,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>addedDate: "2024-03-05"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [showAddWine, setShowAddWine] = useState(false);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const [newWine, setNewWine] = useState({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: '',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'Red Wine',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>region: '',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>vintage: new Date().getFullYear(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quantity: 1,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>value: '',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>notes: ''</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Save wines to localStorage whenever wines state changes</p>
+<p class="p1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>localStorage.setItem('wineLocker_wines', JSON.stringify(wines));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, [wines]);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// PWA Installation Logic</p>
+<p class="p1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Check if already installed</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (window.matchMedia('(display-mode: standalone)').matches) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setIsInstalled(true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Listen for the beforeinstallprompt event</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const handleBeforeInstallPrompt = (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setDeferredPrompt(e);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowInstallPrompt(true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Listen for successful installation</p>
+<p class="p1"><span class="Apple-converted-space">                </span>window.addEventListener('appinstalled', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setIsInstalled(true);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowInstallPrompt(false);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setDeferredPrompt(null);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>return () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, []);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const handleInstallClick = async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (deferredPrompt) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>deferredPrompt.prompt();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const { outcome } = await deferredPrompt.userChoice;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (outcome === 'accepted') {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>setDeferredPrompt(null);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>setShowInstallPrompt(false);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const totalValue = wines.reduce((sum, wine) =&gt; sum + (wine.value * wine.quantity), 0);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const totalBottles = wines.reduce((sum, wine) =&gt; sum + wine.quantity, 0);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const addWine = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (newWine.name &amp;&amp; newWine.region) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const wine = {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>...newWine,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>id: Date.now(),</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>value: parseFloat(newWine.value) || 0,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>rating: 0,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>photo: null,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>addedDate: new Date().toISOString().split('T')[0]</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>};</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setWines([wine, ...wines]);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setNewWine({</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>name: '',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>type: 'Red Wine',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>region: '',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>vintage: new Date().getFullYear(),</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>quantity: 1,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>value: '',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>notes: ''</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setShowAddWine(false);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const WineCard = ({ wine }) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="bg-white rounded-lg shadow-md p-4 mb-4 border border-gray-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between items-start mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 className="font-semibold text-lg text-gray-800"&gt;{wine.name}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="text-gray-600 text-sm"&gt;{wine.region} • {wine.vintage}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="text-gray-500 text-sm"&gt;{wine.type}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="text-right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="font-bold text-green-600"&gt;${wine.value}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="text-sm text-gray-500"&gt;Qty: {wine.quantity}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{wine.rating &gt; 0 &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex items-center mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;Star className="h-4 w-4 text-yellow-400 fill-current" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span className="ml-1 text-sm text-gray-600"&gt;{wine.rating}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>)}</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{wine.notes &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p className="text-sm text-gray-600 italic mb-2"&gt;{wine.notes}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>)}</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between items-center pt-2 border-t border-gray-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span className="text-xs text-gray-400"&gt;Added {wine.addedDate}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex space-x-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button className="p-1 text-gray-400 hover:text-gray-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;Share2 className="h-4 w-4" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button className="p-1 text-gray-400 hover:text-gray-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;Camera className="h-4 w-4" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const AddWineForm = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h2 className="text-xl font-bold mb-4"&gt;Add Wine to Locker&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Wine Name&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>value={newWine.name}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onChange={(e) =&gt; setNewWine({...newWine, name: e.target.value})}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>placeholder="e.g., Château Lafite Rothschild"</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                            </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Type&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;select</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>value={newWine.type}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onChange={(e) =&gt; setNewWine({...newWine, type: e.target.value})}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;option&gt;Red Wine&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;option&gt;White Wine&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;option&gt;Rosé&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;option&gt;Champagne&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;option&gt;Sparkling Wine&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;option&gt;Dessert Wine&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                            </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Region&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>value={newWine.region}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onChange={(e) =&gt; setNewWine({...newWine, region: e.target.value})}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>placeholder="e.g., Bordeaux, France"</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                            </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div className="grid grid-cols-2 gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Vintage&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>type="number"</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>value={newWine.vintage}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>onChange={(e) =&gt; setNewWine({...newWine, vintage: parseInt(e.target.value)})}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>min="1900"</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>max={new Date().getFullYear()}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                                </span></p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Quantity&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>type="number"</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>value={newWine.quantity}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>onChange={(e) =&gt; setNewWine({...newWine, quantity: parseInt(e.target.value)})}</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>min="1"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                            </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Value per Bottle ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>type="number"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>value={newWine.value}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onChange={(e) =&gt; setNewWine({...newWine, value: e.target.value})}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>placeholder="0.00"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>step="0.01"</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                            </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label className="block text-sm font-medium text-gray-700 mb-1"&gt;Notes&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;textarea</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>value={newWine.notes}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onChange={(e) =&gt; setNewWine({...newWine, notes: e.target.value})}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>rows="3"</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>placeholder="Special occasion, tasting notes, etc."</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex space-x-3 mt-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>onClick={() =&gt; setShowAddWine(false)}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>className="flex-1 px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50"</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>Cancel</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>onClick={addWine}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>Add Wine</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const InventoryTab = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between items-center mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h1 className="text-2xl font-bold text-gray-800"&gt;My Wine Locker&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>onClick={() =&gt; setShowAddWine(true)}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 shadow-lg"</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;Plus className="h-5 w-5" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="grid grid-cols-2 gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="text-sm opacity-90"&gt;Total Value&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="text-2xl font-bold"&gt;${totalValue.toLocaleString()}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="text-sm opacity-90"&gt;Total Bottles&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p className="text-2xl font-bold"&gt;{totalBottles}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="flex items-center space-x-2 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex-1 relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>placeholder="Search wines..."</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button className="p-2 border border-gray-300 rounded-md hover:bg-gray-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;Filter className="h-4 w-4 text-gray-600" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{wines.map(wine =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;WineCard key={wine.id} wine={wine} /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>))}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const SocialTab = () =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 className="text-2xl font-bold text-gray-800 mb-6"&gt;Wine Community&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white rounded-lg shadow-md p-4 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex items-center space-x-3 mb-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span className="text-white font-bold"&gt;JD&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p className="font-semibold"&gt;John Davis&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p className="text-sm text-gray-500"&gt;2 hours ago&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p className="text-gray-700 mb-3"&gt;Just added a 2010 Barolo to my collection! Perfect for next week's dinner party. 🍷&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex items-center space-x-4 text-sm text-gray-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button className="flex items-center space-x-1 hover:text-purple-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;Wine className="h-4 w-4" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span&gt;12 likes&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button className="flex items-center space-x-1 hover:text-purple-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;Users className="h-4 w-4" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span&gt;3 comments&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white rounded-lg shadow-md p-4 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex items-center space-x-3 mb-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span className="text-white font-bold"&gt;MW&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p className="font-semibold"&gt;Maria Williams&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p className="text-sm text-gray-500"&gt;5 hours ago&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p className="text-gray-700 mb-3"&gt;Wine tasting event this Friday at 7 PM in the club's wine room. Featuring selections from Tuscany!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex items-center space-x-4 text-sm text-gray-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button className="flex items-center space-x-1 hover:text-purple-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;Calendar className="h-4 w-4" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span&gt;Join Event&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button className="flex items-center space-x-1 hover:text-purple-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;MapPin className="h-4 w-4" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span&gt;Wine Room&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="max-w-md mx-auto bg-gray-50 min-h-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{/* Header */}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white shadow-sm p-4 flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="flex items-center space-x-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;Wine className="h-6 w-6 text-purple-600" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span className="text-lg font-bold text-gray-800"&gt;WineLocker&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button className="p-2 hover:bg-gray-100 rounded-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;Bell className="h-5 w-5 text-gray-600" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{/* Content */}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="pb-20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{activeTab === 'inventory' &amp;&amp; &lt;InventoryTab /&gt;}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{activeTab === 'social' &amp;&amp; &lt;SocialTab /&gt;}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{/* Install Prompt */}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{showInstallPrompt &amp;&amp; !isInstalled &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="install-prompt"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div className="flex items-center space-x-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;p className="font-semibold text-sm"&gt;Install WineLocker&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;p className="text-xs opacity-90"&gt;Add to your home screen for easy access&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onClick={handleInstallClick}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="bg-white text-purple-600 px-3 py-1 rounded-full text-sm font-semibold hover:bg-gray-100"</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;Download className="h-4 w-4 inline mr-1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>Install</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>onClick={() =&gt; setShowInstallPrompt(false)}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>className="text-white text-lg font-bold"</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>×</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>)}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{/* Bottom Navigation */}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="grid grid-cols-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>onClick={() =&gt; setActiveTab('inventory')}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>className={`flex flex-col items-center py-3 ${</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>activeTab === 'inventory' ? 'text-purple-600' : 'text-gray-400'</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>}`}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;Wine className="h-5 w-5 mb-1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span className="text-xs"&gt;My Wines&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>onClick={() =&gt; setActiveTab('social')}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>className={`flex flex-col items-center py-3 ${</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>activeTab === 'social' ? 'text-purple-600' : 'text-gray-400'</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>}`}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;Users className="h-5 w-5 mb-1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span className="text-xs"&gt;Community&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{/* Add Wine Modal */}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{showAddWine &amp;&amp; &lt;AddWineForm /&gt;}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Service Worker Registration</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if ('serviceWorker' in navigator) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>window.addEventListener('load', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const swCode = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const CACHE_NAME = 'winelocker-v1';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const urlsToCache = [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'/',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'/manifest.json'</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>self.addEventListener('install', (event) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>event.waitUntil(</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>caches.open(CACHE_NAME)</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>.then((cache) =&gt; cache.addAll(urlsToCache))</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>self.addEventListener('fetch', (event) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>event.respondWith(</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>caches.match(event.request)</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>.then((response) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>if (response) {</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>return response;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>return fetch(event.request);</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>})</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const blob = new Blob([swCode], { type: 'application/javascript' });</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const swUrl = URL.createObjectURL(blob);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>navigator.serviceWorker.register(swUrl)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>.then((registration) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>console.log('ServiceWorker registration successful');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>})</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>.catch((error) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>console.log('ServiceWorker registration failed');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>ReactDOM.render(&lt;WineLockerApp /&gt;, document.getElementById('root'));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
