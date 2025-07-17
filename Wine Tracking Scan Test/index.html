@@ -1,0 +1,457 @@
+# GitHub Pages Setup for Wine Tracking App
+
+## Step 1: Create the HTML File
+
+Create a file named `index.html` and paste this code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Cellar - Track Your Wine Collection</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useRef } = React;
+        const { Camera, Plus, Minus, Search, Filter, Wine, Star, Eye, Trash2 } = lucide;
+
+        const WineTrackingApp = () => {
+          const [wines, setWines] = useState([]);
+          const [searchTerm, setSearchTerm] = useState('');
+          const [filterType, setFilterType] = useState('all');
+          const [showAddForm, setShowAddForm] = useState(false);
+          const [isScanning, setIsScanning] = useState(false);
+          const fileInputRef = useRef(null);
+
+          // Sample wine data for demonstration
+          const [newWine, setNewWine] = useState({
+            name: '',
+            vintage: '',
+            type: '',
+            region: '',
+            producer: '',
+            quantity: 1,
+            rating: 0,
+            notes: '',
+            image: null
+          });
+
+          const wineTypes = [
+            'Cabernet Sauvignon', 'Chardonnay', 'Pinot Noir', 'Sauvignon Blanc',
+            'Merlot', 'Zinfandel', 'Syrah/Shiraz', 'Riesling', 'Pinot Grigio',
+            'Malbec', 'Sangiovese', 'Tempranillo', 'Gewürztraminer', 'Moscato'
+          ];
+
+          const mockWineRecognition = async (imageFile) => {
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Mock response based on filename or random selection
+            const mockWines = [
+              {
+                name: 'Opus One',
+                vintage: '2018',
+                type: 'Cabernet Sauvignon',
+                region: 'Napa Valley, California',
+                producer: 'Opus One Winery'
+              },
+              {
+                name: 'Dom Pérignon',
+                vintage: '2012',
+                type: 'Champagne',
+                region: 'Champagne, France',
+                producer: 'Moët & Chandon'
+              },
+              {
+                name: 'Caymus',
+                vintage: '2020',
+                type: 'Cabernet Sauvignon',
+                region: 'Napa Valley, California',
+                producer: 'Caymus Vineyards'
+              }
+            ];
+            
+            return mockWines[Math.floor(Math.random() * mockWines.length)];
+          };
+
+          const handlePhotoCapture = async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            setIsScanning(true);
+            try {
+              // Convert file to base64 for display
+              const reader = new FileReader();
+              reader.onload = async (e) => {
+                const imageData = e.target.result;
+                
+                // Mock API call for wine recognition
+                const recognizedWine = await mockWineRecognition(file);
+                
+                setNewWine({
+                  ...recognizedWine,
+                  quantity: 1,
+                  rating: 0,
+                  notes: '',
+                  image: imageData
+                });
+                
+                setShowAddForm(true);
+                setIsScanning(false);
+              };
+              reader.readAsDataURL(file);
+            } catch (error) {
+              console.error('Error processing image:', error);
+              setIsScanning(false);
+            }
+          };
+
+          const addWine = () => {
+            if (!newWine.name || !newWine.vintage || !newWine.type) return;
+
+            const wine = {
+              ...newWine,
+              id: Date.now(),
+              dateAdded: new Date().toLocaleDateString()
+            };
+
+            setWines([...wines, wine]);
+            setNewWine({
+              name: '',
+              vintage: '',
+              type: '',
+              region: '',
+              producer: '',
+              quantity: 1,
+              rating: 0,
+              notes: '',
+              image: null
+            });
+            setShowAddForm(false);
+          };
+
+          const updateQuantity = (id, change) => {
+            setWines(wines.map(wine => {
+              if (wine.id === id) {
+                const newQuantity = Math.max(0, wine.quantity + change);
+                return { ...wine, quantity: newQuantity };
+              }
+              return wine;
+            }));
+          };
+
+          const deleteWine = (id) => {
+            setWines(wines.filter(wine => wine.id !== id));
+          };
+
+          const filteredWines = wines.filter(wine => {
+            const matchesSearch = wine.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                 wine.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                 wine.producer.toLowerCase().includes(searchTerm.toLowerCase());
+            
+            const matchesFilter = filterType === 'all' || wine.type === filterType;
+            
+            return matchesSearch && matchesFilter;
+          });
+
+          const totalBottles = wines.reduce((sum, wine) => sum + wine.quantity, 0);
+
+          return React.createElement('div', {className: "min-h-screen bg-gradient-to-br from-purple-900 via-red-900 to-pink-900"},
+            React.createElement('div', {className: "container mx-auto px-4 py-6 max-w-4xl"},
+              // Header
+              React.createElement('div', {className: "text-center mb-8"},
+                React.createElement('div', {className: "flex items-center justify-center gap-3 mb-2"},
+                  React.createElement(Wine, {className: "w-8 h-8 text-red-400"}),
+                  React.createElement('h1', {className: "text-3xl font-bold text-white"}, "Wine Cellar")
+                ),
+                React.createElement('p', {className: "text-red-200"}, "Track your wine collection with AI-powered bottle recognition")
+              ),
+              
+              // Stats
+              React.createElement('div', {className: "grid grid-cols-2 gap-4 mb-6"},
+                React.createElement('div', {className: "bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center"},
+                  React.createElement('div', {className: "text-2xl font-bold text-white"}, wines.length),
+                  React.createElement('div', {className: "text-red-200"}, "Unique Wines")
+                ),
+                React.createElement('div', {className: "bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center"},
+                  React.createElement('div', {className: "text-2xl font-bold text-white"}, totalBottles),
+                  React.createElement('div', {className: "text-red-200"}, "Total Bottles")
+                )
+              ),
+              
+              // Photo Capture Button
+              React.createElement('div', {className: "text-center mb-6"},
+                React.createElement('input', {
+                  type: "file",
+                  accept: "image/*",
+                  capture: "environment",
+                  onChange: handlePhotoCapture,
+                  ref: fileInputRef,
+                  className: "hidden"
+                }),
+                React.createElement('button', {
+                  onClick: () => fileInputRef.current.click(),
+                  disabled: isScanning,
+                  className: "bg-red-600 hover:bg-red-700 disabled:bg-red-800 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-colors"
+                },
+                  React.createElement(Camera, {className: "w-5 h-5"}),
+                  isScanning ? 'Scanning Wine...' : 'Scan Wine Bottle'
+                )
+              ),
+              
+              // Add Wine Form
+              showAddForm && React.createElement('div', {className: "bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-6"},
+                React.createElement('h3', {className: "text-xl font-semibold text-white mb-4"}, "Add Wine to Collection"),
+                
+                newWine.image && React.createElement('div', {className: "mb-4 text-center"},
+                  React.createElement('img', {src: newWine.image, alt: "Wine bottle", className: "w-32 h-48 object-cover rounded-lg mx-auto"})
+                ),
+                
+                React.createElement('div', {className: "grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"},
+                  React.createElement('input', {
+                    type: "text",
+                    placeholder: "Wine Name",
+                    value: newWine.name,
+                    onChange: (e) => setNewWine({...newWine, name: e.target.value}),
+                    className: "bg-white/20 text-white placeholder-red-200 px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400"
+                  }),
+                  React.createElement('input', {
+                    type: "text",
+                    placeholder: "Vintage Year",
+                    value: newWine.vintage,
+                    onChange: (e) => setNewWine({...newWine, vintage: e.target.value}),
+                    className: "bg-white/20 text-white placeholder-red-200 px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400"
+                  }),
+                  React.createElement('select', {
+                    value: newWine.type,
+                    onChange: (e) => setNewWine({...newWine, type: e.target.value}),
+                    className: "bg-white/20 text-white px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400"
+                  },
+                    React.createElement('option', {value: ""}, "Select Wine Type"),
+                    wineTypes.map(type => 
+                      React.createElement('option', {key: type, value: type, className: "text-gray-800"}, type)
+                    )
+                  ),
+                  React.createElement('input', {
+                    type: "text",
+                    placeholder: "Region",
+                    value: newWine.region,
+                    onChange: (e) => setNewWine({...newWine, region: e.target.value}),
+                    className: "bg-white/20 text-white placeholder-red-200 px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400"
+                  }),
+                  React.createElement('input', {
+                    type: "text",
+                    placeholder: "Producer",
+                    value: newWine.producer,
+                    onChange: (e) => setNewWine({...newWine, producer: e.target.value}),
+                    className: "bg-white/20 text-white placeholder-red-200 px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400"
+                  }),
+                  React.createElement('div', {className: "flex items-center gap-2"},
+                    React.createElement('label', {className: "text-white"}, "Quantity:"),
+                    React.createElement('input', {
+                      type: "number",
+                      min: "1",
+                      value: newWine.quantity,
+                      onChange: (e) => setNewWine({...newWine, quantity: parseInt(e.target.value) || 1}),
+                      className: "bg-white/20 text-white px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400 w-20"
+                    })
+                  )
+                ),
+                
+                React.createElement('textarea', {
+                  placeholder: "Tasting notes...",
+                  value: newWine.notes,
+                  onChange: (e) => setNewWine({...newWine, notes: e.target.value}),
+                  className: "w-full bg-white/20 text-white placeholder-red-200 px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400 mb-4",
+                  rows: "3"
+                }),
+                
+                React.createElement('div', {className: "flex gap-2"},
+                  React.createElement('button', {
+                    onClick: addWine,
+                    className: "bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+                  }, "Add Wine"),
+                  React.createElement('button', {
+                    onClick: () => setShowAddForm(false),
+                    className: "bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+                  }, "Cancel")
+                )
+              ),
+              
+              // Search and Filter
+              React.createElement('div', {className: "flex flex-col sm:flex-row gap-4 mb-6"},
+                React.createElement('div', {className: "relative flex-1"},
+                  React.createElement(Search, {className: "absolute left-3 top-3 w-4 h-4 text-red-300"}),
+                  React.createElement('input', {
+                    type: "text",
+                    placeholder: "Search wines...",
+                    value: searchTerm,
+                    onChange: (e) => setSearchTerm(e.target.value),
+                    className: "w-full bg-white/20 text-white placeholder-red-200 pl-10 pr-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400"
+                  })
+                ),
+                React.createElement('select', {
+                  value: filterType,
+                  onChange: (e) => setFilterType(e.target.value),
+                  className: "bg-white/20 text-white px-4 py-2 rounded-lg border border-white/30 focus:outline-none focus:border-red-400"
+                },
+                  React.createElement('option', {value: "all", className: "text-gray-800"}, "All Types"),
+                  wineTypes.map(type => 
+                    React.createElement('option', {key: type, value: type, className: "text-gray-800"}, type)
+                  )
+                )
+              ),
+              
+              // Wine Collection
+              React.createElement('div', {className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"},
+                filteredWines.map(wine => 
+                  React.createElement('div', {key: wine.id, className: "bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-colors"},
+                    wine.image && React.createElement('img', {src: wine.image, alt: wine.name, className: "w-full h-48 object-cover rounded-lg mb-4"}),
+                    
+                    React.createElement('div', {className: "flex justify-between items-start mb-2"},
+                      React.createElement('h3', {className: "text-lg font-semibold text-white"}, wine.name),
+                      React.createElement('button', {
+                        onClick: () => deleteWine(wine.id),
+                        className: "text-red-400 hover:text-red-300 transition-colors"
+                      },
+                        React.createElement(Trash2, {className: "w-4 h-4"})
+                      )
+                    ),
+                    
+                    React.createElement('div', {className: "text-red-200 mb-2"},
+                      React.createElement('p', {className: "font-medium"}, `${wine.vintage} • ${wine.type}`),
+                      React.createElement('p', {className: "text-sm"}, wine.producer),
+                      React.createElement('p', {className: "text-sm"}, wine.region)
+                    ),
+                    
+                    wine.notes && React.createElement('p', {className: "text-red-100 text-sm mb-4 italic"}, `"${wine.notes}"`),
+                    
+                    React.createElement('div', {className: "flex items-center justify-between"},
+                      React.createElement('div', {className: "flex items-center gap-2"},
+                        React.createElement('button', {
+                          onClick: () => updateQuantity(wine.id, -1),
+                          className: "bg-red-600 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                        },
+                          React.createElement(Minus, {className: "w-4 h-4"})
+                        ),
+                        React.createElement('span', {className: "text-white font-semibold min-w-12 text-center"},
+                          `${wine.quantity} ${wine.quantity === 1 ? 'bottle' : 'bottles'}`
+                        ),
+                        React.createElement('button', {
+                          onClick: () => updateQuantity(wine.id, 1),
+                          className: "bg-green-600 hover:bg-green-700 text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                        },
+                          React.createElement(Plus, {className: "w-4 h-4"})
+                        )
+                      ),
+                      
+                      React.createElement('div', {className: "text-xs text-red-300"},
+                        `Added ${wine.dateAdded}`
+                      )
+                    )
+                  )
+                )
+              ),
+              
+              // Empty States
+              wines.length === 0 && React.createElement('div', {className: "text-center py-12"},
+                React.createElement(Wine, {className: "w-16 h-16 text-red-400 mx-auto mb-4"}),
+                React.createElement('h3', {className: "text-xl font-semibold text-white mb-2"}, "No wines in your collection yet"),
+                React.createElement('p', {className: "text-red-200 mb-4"}, "Start by scanning a wine bottle to add it to your cellar!")
+              ),
+              
+              filteredWines.length === 0 && wines.length > 0 && React.createElement('div', {className: "text-center py-12"},
+                React.createElement(Search, {className: "w-16 h-16 text-red-400 mx-auto mb-4"}),
+                React.createElement('h3', {className: "text-xl font-semibold text-white mb-2"}, "No wines match your search"),
+                React.createElement('p', {className: "text-red-200"}, "Try adjusting your search terms or filters.")
+              )
+            )
+          );
+        };
+
+        ReactDOM.render(React.createElement(WineTrackingApp), document.getElementById('root'));
+    </script>
+</body>
+</html>
+```
+
+## Step 2: Set Up GitHub Pages
+
+1. **Create a new repository on GitHub:**
+   - Go to GitHub.com and click "New repository"
+   - Name it something like `wine-cellar` or `wine-tracking-app`
+   - Make sure it's public
+   - Initialize with a README
+
+2. **Upload your files:**
+   - Click "Add file" > "Upload files" 
+   - Upload your `index.html` file
+   - Commit the changes
+
+3. **Enable GitHub Pages:**
+   - Go to your repository settings
+   - Scroll down to "Pages" in the left sidebar
+   - Under "Source", select "Deploy from a branch"
+   - Choose "main" branch and "/ (root)" folder
+   - Click "Save"
+
+4. **Access your app:**
+   - GitHub will provide a URL like: `https://yourusername.github.io/wine-cellar`
+   - It may take a few minutes to go live
+
+## Step 3: Access on Your iPhone
+
+Once it's live:
+1. Open Safari on your iPhone
+2. Go to your GitHub Pages URL
+3. Tap the Share button and "Add to Home Screen"
+4. Now you have a native-like app icon!
+
+## Optional: Add a Manifest File
+
+Create a `manifest.json` file for better mobile experience:
+
+```json
+{
+  "name": "Wine Cellar",
+  "short_name": "Wine Cellar",
+  "description": "Track your wine collection with AI-powered bottle recognition",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#7c2d12",
+  "theme_color": "#dc2626",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTIgMkw0IDRWMTJDNCA5IDEwIDEwIDEyIDEyQzE0IDEwIDIwIDkgMjAgMTJWNEwxMiAyWiIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0iI2RjMjYyNiIvPgo8L3N2Zz4K",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+```
+
+Then add this to your HTML head section:
+```html
+<link rel="manifest" href="manifest.json">
+```
+
+Your wine tracking app will be live on GitHub Pages and accessible from your iPhone!
